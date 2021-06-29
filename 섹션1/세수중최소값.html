@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 인수가 여러개 일 때도 최소값을 구하도록 arguments 객체를 사용했다.
+            // arguments 객체는 해당 함수의 인수들을 유사배열객체로 가지고 있다.
+            function solution(a, b, c){
+                let answer;
+                // 100이하의 자연수만 받기때문에 999를 최소값으로 초기화
+                let min = 999; 
+                // 입력받은 인수의 개수만큼 for문을 돌려서 비교한다.
+                for(let i=0; i< arguments.length; i++){
+                    if(arguments[i] < min){
+                        min = arguments[i]
+                    }
+                }
+                answer = min;
+                return answer;
+            }
+
+            console.log(solution(2, 5, 7, -1));
+        </script>
+    </body>
+</html>
