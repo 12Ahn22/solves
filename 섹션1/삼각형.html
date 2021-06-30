@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 삼각형의 조건
+      function solution(a, b, c) {
+        let answer = 'YES';
+        // 1. 가장 긴 변 구하기
+        let max = a;
+        if (max < b) max = b;
+        if (max < c) max = c;
+
+        // 2. 가장 긴 변의 길이는 다른 두 변의 길이의 합보다 작아야한다.
+        let total = a + b + c;
+        if (total - max < max) {
+          answer = 'NO';
+        }
+
+        return answer;
+      }
+
+      console.log(solution(13, 33, 17));
+      console.log(solution(10, 3, 5));
+    </script>
+  </body>
+</html>

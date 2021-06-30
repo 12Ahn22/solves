@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = '',
+          max = Number.MIN_SAFE_INTEGER;
+
+        for (const str of s) {
+          // String객체는 length 프로퍼티를 가지고 있다.
+          if (str.length > max) {
+            max = str.length;
+            answer = str;
+          }
+        }
+
+        return answer;
+      }
+      let str = ['teacher', 'time', 'student', 'beautiful', 'good'];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        for (let x of s) {
+          // 아스키코드를 사용하거나
+          //let num=x.charCodeAt();
+          //if(num>=65 && num<=90) answer++;
+
+          // 문자를 다 돌아서 내장메서드 toUpperCase를 사용하기
+          if (x === x.toUpperCase()) answer++;
+        }
+
+        return answer;
+      }
+
+      let str = 'KoreaTimeGood';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

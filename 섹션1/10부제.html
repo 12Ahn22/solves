@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
+        // 차량 개수만큼 확인해야한다
+        // for (let i = 0; i < arr.length; i++) {
+        //   // 차량의 앞자리와 날짜가 같다면
+        //   let car = arr[i] % 10;
+        //   if (car === day) {
+        //     answer++;
+        //   }
+        // }
+
+        // for..of 사용하기
+        for (const i of arr) {
+          if (i % 10 === day) answer++;
+        }
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>

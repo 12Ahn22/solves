@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 내가 푼 방식
+      // slice로 잘라서 문자를 반환한다.
+      // slice(시작index, 끝인덱스); 반환값은 잘린 문자열
+      function solution(s) {
+        let answer, mid;
+        // 1. 짝수일 때와 홀수일 떄
+        // 짝수 일 떄,
+        if (s.length % 2 === 0) {
+          // 2. 가운데를 선정
+          mid = s.length / 2;
+          // 3. 가운데 값 문자를 반환
+          answer = s.slice(mid - 1, mid + 1);
+        }
+        // 홀수 일 떄,
+        else {
+          mid = Math.floor(s.length / 2); // 위로 올림
+          // 가운데 문자 값 반환
+          answer = s.slice(mid, mid + 1);
+        }
+
+        return answer;
+      }
+      // substring을 사용하는 방식
+      {
+        function solution(s) {
+          let answer;
+          let mid = Math.floor(s.length / 2);
+          if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+          else answer = s.substring(mid - 1, mid + 1);
+          //if(s.length%2===1) answer=s.substr(mid, 1);
+          //else answer=s.substr(mid-1, 2);
+          return answer;
+        }
+        console.log(solution('study'));
+      }
+
+      console.log(solution('good'));
+      console.log(solution('study'));
+    </script>
+  </body>
+</html>
