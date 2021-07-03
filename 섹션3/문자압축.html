@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+          // 내 풀이 방식
+            function solution(s){
+              // 다음 문자도 이전 문자와 같다면 ++를 해준다
+
+              // 아니라면 0으로 바꾸고 for문을 반복한다.
+              let answer = '';
+              // 자기 자신은 무조곤 포함해야하니까 num은 1부터 시작한다
+              let num = 1;
+              for(let i=0; i<s.length; i++){
+                // 지금 문자와 다음 문자가 같다면 같은 문자가 이어지고있다.
+                if(s[i]===s[i+1]){
+                  num ++;
+                }else{
+                  // num이 한개라면 뒤에 숫자를 붙일 필요가없다
+                  if(num === 1){
+                    answer+= s[i];
+                  }
+                  else{
+                    answer+= s[i]+String(num);
+                  }
+                  num = 1;
+                }
+              }
+              return answer;
+            }
+            const str = 'KKHSSSSSSSE';
+            const str2 = 'aabbcccde';
+            console.log(solution(str));
+            console.log(solution(str2));
+        </script>
+    </body>
+</html>
+
+
+

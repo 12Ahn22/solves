@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+          // 내 풀이 방식
+          // 1. 문자 하나하나를 직접 비교한다.
+            function solution(s){
+              for(let i=0; i < Math.floor(s.length); i++){
+                // 대소문자 구분이 없으니 둘 다 대문자로 비교하겠다.
+                if(s[i].toUpperCase() === s[s.length - i - 1].toUpperCase()){
+                  console.log('s[i]',s[i]);
+                  console.log('s[s.length - i - 1]',s[s.length - i - 1]);
+                }
+                else{
+                  return "NO";
+                }
+              }
+              return 'YES';
+            }
+            let str="gooG";
+            let str2 = "test";
+            let str3 = "Tooot";
+            console.log(solution(str));
+            console.log(solution(str2));
+            console.log(solution(str3));
+        </script>
+    </body>
+</html>
+
+
+

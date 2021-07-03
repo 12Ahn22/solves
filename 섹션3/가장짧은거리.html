@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+          //  내 풀이
+            function solution(s, t){
+                let answer=[];
+                let idx=[];
+                // 1. 문자열에서 t문자의 인덱스들을 idx 배열에 저장한다
+                for(let i = 0; i < s.length; i ++){
+                  if(s[i] === t) idx.push(i);
+                }
+                // 2. 모든 문자와 t의 위치들이 있는 배열 값을 빼서 거리를 판단
+                // 문자열 길이만큼 비교를 해야해서 for문
+                for(let i = 0;i< s.length; i++){
+                  // 최단거리를 저장해야함
+                  let min = Number.MAX_SAFE_INTEGER; 
+                  // t문자들의 모든 위치값들과 계산을 해 가장 가까운 거리를 알아내야하기 때문에
+                  // t문자 위치들이 저장된 idx 배열의 길이만 큼 반복
+                  for(let j = 0; j< idx.length; j++){
+                    let idx2 = Math.abs(i - idx[j]); // 절대값이 작을 수록 가까운 거리
+                    if(idx2 < min) min = idx2; // 가장 가까운 거리를 min에 넣고
+                  }
+                  // 구한 최소거리를 answer 배열에 push
+                  answer.push(min);
+                }
+                return answer;
+                }
+            
+            // 답
+            {
+              function solution(s, t){
+                let answer=[];
+                let p=1000;
+                for(let x of s){
+                  // 문자가 같으면 최소거리는 0
+                    if(x===t){
+                        p=0;
+                        answer.push(p);
+                    }
+                    else{
+                        p++;
+                        answer.push(p);
+                    }
+                }
+                p=1000;
+                for(let i=s.length-1; i>=0; i--){
+                    if(s[i]===t) p=0;
+                    else{
+                        p++;
+                        answer[i]=Math.min(answer[i], p);
+                    }
+                }
+                return answer;
+            }
+            
+            let str="teachermode";
+            console.log(solution(str, 'e'));
+            }
+
+
+            let str="teachermode";
+            console.log(solution(str, 'e'));
+            console.log(solution('banann', 'a'));
+        </script>
+    </body>
+</html>
