@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 내가 푼 방법
+      function solution(n, arr) {
+        let max = Number.MIN_SAFE_INTEGER;
+        let anwser = 0;
+
+        for (let i = 0; i < n; i++) {
+          // 자리수 값을 더하기
+          let num = arr[i];
+          let result = 0;
+
+          // 자리수 값을 전부 더하기
+          while (true) {
+            result += num % 10;
+            num = Math.floor(num / 10);
+
+            // 탈출 조건
+            if (num <= 0) break;
+          }
+          console.log(result);
+
+          // 어떤 값이 큰 지
+          if (max < result) {
+            max = result;
+            anwser = arr[i];
+          } else if (max === result) {
+            // 값이 같을 경우 좀 더 큰 arr요소를 선택한다.
+            anwser = anwser >= arr[i] ? anwser : arr[i];
+          }
+        }
+        return anwser;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      let arr2 = [421, 225, 123, 55, 187];
+      console.log(solution(7, arr));
+      console.log('=======================');
+      console.log(solution(5, arr2));
+
+      {
+        // 다른 풀이
+        function solution(n, arr) {
+          let answer,
+            max = Number.MIN_SAFE_INTEGER;
+
+          for (let x of arr) {
+            let sum = x
+              .toString()
+              .split('')
+              .reduce((a, b) => a + Number(b), 0);
+            if (sum > max) {
+              max = sum;
+              answer = x;
+            } else if (sum === max) {
+              if (x > answer) answer = x;
+            }
+          }
+          return answer;
+        }
+        console.log('다른 풀이 방법');
+        let arr = [128, 460, 603, 40, 521, 137, 123];
+        console.log(solution(7, arr));
+      }
+    </script>
+  </body>
+</html>
