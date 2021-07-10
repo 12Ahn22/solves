@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, product) {
+        let answer = 0;
+        let n = product.length; // 학생의 수
+        // 정렬 - 정렬 메서드는 해당 배열자체를 변경해버린다.
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+        // 문제를 본질적으로 생각하기
+        // 브루드포스는 그냥 다 검색해보는 것이다.
+
+        for (let i = 0; i < n; i++) {
+          // 일단 첫번째 물건부터 할인을 받은 후, 전부 구매
+          let money = m - (product[i][0] / 2 + product[i][1]);
+          let cnt = 1;
+          for (let j = 0; j < n; j++) {
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+              money -= product[j][0] + product[j][1];
+              cnt++;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+        return answer;
+      }
+
+      // 1번째 줄 - [학생수 , 예산]
+      // 이후 -     [가격, 배송비]
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>
