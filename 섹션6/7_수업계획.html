@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수업 계획</title>
+</head>
+<body>
+  <script>
+    // 
+    function solution(compulsory, subject){
+      let answer;
+      // 1. 필수과목을 배열에 넣는다
+      const compulsoryArray = compulsory.split('');
+      const compulsoryLength = compulsory.length;
+      let count = 0;
+
+      // 2. 과목 계획 중 필수 과목을 만나면
+      for(let s of subject){
+        // 현재 과목이 필수 과목에 있다면,
+        if(compulsoryArray.includes(s)){
+          // 필수과목 배열을 shift해서 비교
+          // 둘이 같다면, 순서가 맞는 중
+          answer = s === compulsoryArray.shift() ? 'YES' : 'NO';
+          count++;
+        }
+      }
+      answer = count === compulsoryLength ? 'YES' : 'NO';
+      return answer;
+    }
+
+    let a="CBA";
+    let b="CBDAGE";
+    let c="CBA";
+    console.log(solution(a, b));
+    console.log(solution(a, c));
+  </script>
+</body>
+</html>

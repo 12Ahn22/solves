@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카카오 인형뽑기</title>
+</head>
+<body>
+  <script>
+    // 프로그래머스에서 풀어봤기 때문에 코드를 그대로 가져와봤다.
+    function solution(board, moves) {
+    var answer = 0;
+    let basket = [];
+    // moves 만큼 뽑기를 해야한다.
+    moves.forEach((move)=>{
+      // 해당 move에 속하는 배열에서 0이 아닌 숫자 뽑기
+        let doll = 0;
+        for(let i=0; i < board[0].length; i++){
+            
+            if(board[i][move-1] !== 0) {
+                doll = board[i][move-1];
+                board[i][move-1] = 0;
+                break;
+            }
+        }
+        // 뽑은 doll을 바구니에 넣기
+        // 바구니의 가장 위에있는 인형하고 지금 인형이 같은지 비교하기
+        if(doll === 0 ) return;
+        const compare = compareDoll(basket,doll);
+        // 같다면 answer + 2하고 pop해주기
+        if(compare){
+            answer = answer + 2;
+            basket.pop();
+        }
+        else{
+            basket.push(doll);
+        }
+    })
+    return answer;
+}
+
+// 인형 비교하는 함수
+function compareDoll(basket,doll){
+    return basket[basket.length-1] === doll ? true : false;
+}
+  </script>
+</body>
+</html>

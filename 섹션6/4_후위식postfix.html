@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+          // 내 풀이
+          // 후위표기식을 계산하기
+            function solution(s){  
+                let answer;
+                // 내가 생각한 로직
+                // 1. 숫자를 만나면 스택에 넣는다.
+                // 2. 연산자를 만나면 두개를 pop해서 계산한다.
+                // 3. 계산한 결과를 다시 push한다.
+                let stack = [];
+                for(let i of s){
+                  // 숫자의 범위는 아스키코드로 결정
+                  if(  48 <= i.charCodeAt() && i.charCodeAt() <= 57){
+                    stack.push(Number(i));
+                  }
+                  else{
+                    // 두 번 꺼내기
+                    const num1 = stack.pop();
+                    const num2 = stack.pop();
+                    console.log(num1);
+                    console.log(num2);
+                    console.log('지금 연산자',i)
+                    let res= 0;
+                    // 둘을 계산해서 스택에 넣기
+                    // 연산자가 문자열이기 때문에 스위치문을 사용함
+                    switch (i) {
+                      case '+':
+                        res = num2 + num1;
+                        stack.push(res);
+                        break;
+                      case '-':
+                        res = num2 - num1;
+                        stack.push(res);
+                        break;
+                      case '*':
+                        res = num2 * num1;
+                        stack.push(res);
+                        break;
+                      case '/':
+                        res = num2 / num1;
+                        stack.push(res);
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                }
+                // for문이 끝나고 남아있는 값을 리턴
+                return stack.pop();
+            }
+
+            let str="352+*9-";
+            console.log(solution(str));
+            
+            // 다른 방식 - 나랑 로직은 같고
+            // 문자열을 구분하는 방식이 isNaN을 사용했다.
+            // isNaN이 true면 숫자가 아니다
+            // isNaN이 false면 숫자다.
+            {
+              function solution(s){  
+                let answer;
+                let stack=[];
+                for(let x of s){
+                    if(!isNaN(x)) stack.push(Number(x));
+                    else{
+                        let rt=stack.pop();
+                        let lt=stack.pop();
+                        if(x==='+') stack.push(lt+rt);
+                        else if(x==='-') stack.push(lt-rt);
+                        else if(x==='*') stack.push(lt*rt);
+                        else if(x==='/') stack.push(lt/rt);
+                    }
+                }
+                answer=stack[0];
+                return answer;
+            }
+
+            let str="352+*9-";
+            console.log(solution(str));
+            }
+        </script>
+    </body>
+</html>
