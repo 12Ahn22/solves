@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버블 정렬</title>
+  </head>
+  <body>
+    <script>
+      // 버블 정렬
+      function sol(arr) {
+        let answer = arr;
+
+        // 1. i번째 요소와 i+1 요소를 계속 비교해야한다.
+        // 2. 한번 회전을 돌면 맨 뒤에서부터 하나씩 정렬된다.
+        for (let i = 0; i < answer.length; i++) {
+          // 한번 회전이 끝날 때 마다 맨 뒤가 정렬되기 때문에
+          // j는 answer.length - i 만큼만 반복하면 된다.
+          for (let j = 0; j < answer.length - i - 1; j++) {
+            // -1 을 하는 이유는 마지막 j+1 요소가 undefined이기 때문에
+            if (answer[j] > answer[j + 1]) {
+              [answer[j], answer[j + 1]] = [answer[j + 1], answer[j]];
+            }
+          }
+        }
+        return answer;
+      }
+
+      console.log(sol([2, 1, 7, 5, 12, 9, 3]));
+    </script>
+  </body>
+</html>

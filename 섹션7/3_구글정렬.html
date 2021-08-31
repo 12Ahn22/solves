@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구글 인터뷰 정렬</title>
+  </head>
+  <body>
+    <script>
+      // 내 솔루션
+      {
+        function sol(arr) {
+          let answer;
+          // 1. 음수는 음수대로 배열에 넣는다.
+          // 2. 양수는 양수대로 배열에 넣는다.
+          // 3. 두 배열을 합친다.
+          let negativeArr = [];
+          let positiveArr = [];
+
+          for (let n of arr) {
+            // 1,2
+            if (n < 0) negativeArr.push(n);
+            else positiveArr.push(n);
+          }
+          // 3
+          answer = negativeArr.concat(positiveArr);
+
+          return answer;
+        }
+        console.log(sol([1, 2, 3, -3, -2, 5, 6, -6]));
+      }
+    </script>
+  </body>
+</html>
